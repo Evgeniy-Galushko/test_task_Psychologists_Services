@@ -1,0 +1,48 @@
+.navHeder {
+  /* width: 1440px; */
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+a {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #191a15;
+}
+
+.activeHome::before {
+  content: "";
+  position: absolute;
+  margin-left: 17px;
+  top: 62px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #54be96;
+}
+
+.activePsycho::before {
+  content: "";
+  position: absolute;
+  margin-left: 45px;
+  top: 62px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #54be96;
+}
+
+.activeFav::before {
+  content: "";
+  position: absolute;
+  margin-left: 28px;
+  top: 62px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #54be96;
+}

@@ -1,0 +1,51 @@
+.authorizedUserBox {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+
+.iconUser {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #54be96;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.nameUser {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #191a15;
+}
+
+.buttonLogOut {
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  border-radius: 30px;
+  padding: 14px 39px;
+  width: 135px;
+  height: 48px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #191a15;
+}

@@ -1,0 +1,67 @@
+.sectionHome {
+  padding: 78px 128px;
+  display: flex;
+  flex-direction: row;
+  gap: 125px;
+}
+
+.greetings {
+  width: 595px;
+  height: 438px;
+}
+
+.titleHome {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 1.025;
+  letter-spacing: -0.02em;
+  color: #191a15;
+  margin-bottom: 20px;
+}
+
+.titleGreen {
+  font-style: italic;
+  color: #54be96;
+}
+
+.paragraphHome {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: #191a15;
+  margin-bottom: 40px;
+  width: 510px;
+}
+
+.buttonHome {
+  border-radius: 30px;
+  padding: 18px 50px;
+  width: 235px;
+  height: 60px;
+  background-color: #54be96;
+  box-sizing: border-box;
+  border: none;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+}
+
+.icon {
+  margin-left: 17px;
+  width: 18px;
+  height: 18px;
+}
+
+.backgroundImgHome {
+  border-radius: 10px;
+  width: 464px;
+  height: 526px;
+  background: url(../../img/backgroundImgHome.jpg);
+}
