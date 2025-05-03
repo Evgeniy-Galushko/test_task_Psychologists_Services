@@ -20,7 +20,35 @@ export default function HomePage() {
           </svg>
         </button>
       </li>
-      <li className={s.backgroundImgHome}></li>
+      <li className={s.backgroundImgHome}>
+        <ul>
+          <li className={s.boxQuestion}>
+            <svg className={s.iconQuestion}>
+              <use href={`${sprite}#icon-question`} />
+            </svg>
+          </li>
+          <li className={s.boxPeople}>
+            <svg className={s.iconPeople}>
+              <use href={`${sprite}#icon-mdi_users`} />
+            </svg>
+          </li>
+          <li className={s.boxExperienced}>
+            <ul className={s.experienced}>
+              <li className={s.iconBox}>
+                <svg className={s.iconExperienced}>
+                  <use href={`${sprite}#icon-green_bird`} />
+                </svg>
+              </li>
+              <li>
+                <p className={s.experiencedParagraph}>
+                  Experienced psychologists
+                </p>
+                <p className={s.experiencedNumber}>15,000</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ul>
   );
 }

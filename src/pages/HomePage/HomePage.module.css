@@ -8,6 +8,7 @@
 .greetings {
   width: 595px;
   height: 438px;
+  margin-top: 48px;
 }
 
 .titleHome {
@@ -64,4 +65,100 @@
   width: 464px;
   height: 526px;
   background: url(../../img/backgroundImgHome.jpg);
+}
+
+.boxQuestion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 35px;
+  top: 185px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #4535af;
+  transform: rotate(-15deg);
+}
+
+.iconQuestion {
+  width: 10px;
+  height: 17px;
+  transform: rotate(15deg);
+}
+
+.boxPeople {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 449px;
+  top: 38px;
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  background-color: #fbc75e;
+  transform: rotate(15deg);
+}
+
+.iconQuestion {
+  width: 10px;
+  height: 17px;
+  transform: rotate(15deg);
+}
+
+.iconPeople {
+  width: 25px;
+  height: 25px;
+  transform: rotate(-10deg);
+}
+
+.boxExperienced {
+  box-sizing: border-box;
+  width: 311px;
+  height: 118px;
+  border-radius: 20px;
+  background-color: #54be96;
+  padding: 32px;
+
+  position: relative;
+  right: 104px;
+  top: 240px;
+}
+
+.experienced {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.iconBox {
+  border-radius: 13px;
+  width: 54px;
+  height: 54px;
+  background-color: #fbfbfb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconExperienced {
+  width: 20px;
+  height: 15px;
+}
+
+.experiencedParagraph {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(251, 251, 251, 0.5);
+
+  margin-bottom: 8px;
+}
+
+.experiencedNumber {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fbfbfb;
 }

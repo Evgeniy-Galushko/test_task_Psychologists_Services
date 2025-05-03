@@ -3,13 +3,12 @@ import s from "./Header.module.css";
 import sprite from "../../img/sprite.svg";
 import Navigation from "../Navigation/Navigation.jsx";
 import Auth from "../Auth/Auth.jsx";
-import { useState } from "react";
 import AuthorizedUser from "../AuthorizedUser/AuthorizedUser.jsx";
 
-export default function Header() {
+export default function Header({ openModal }) {
   const auth = false;
   return (
-    <section className={s.header}>
+    <header className={s.header}>
       <ul className={s.headerUl}>
         <li>
           <NavLink to="/">
@@ -22,7 +21,7 @@ export default function Header() {
           <Navigation />
         </li>
       </ul>
-      {auth ? <AuthorizedUser /> : <Auth />}
-    </section>
+      {auth ? <AuthorizedUser /> : <Auth openModal={openModal} />}
+    </header>
   );
 }

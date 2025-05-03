@@ -3,6 +3,7 @@ import { PropagateLoader } from "react-spinners";
 import "../components/App.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "./Header/Header.jsx";
+import LogInModal from "./LogInModal/LogInModal.jsx";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const Psychologists = lazy(() =>
@@ -15,9 +16,24 @@ const NotFoundPage = lazy(() =>
 
 function App() {
   const [color, setColor] = useState("#3470FF");
+  const [modalLogin, setModalLogin] = useState(false);
+
+  function openModal() {
+    setModalLogin(true);
+  }
+
+  function closeModalLogin() {
+    setModalLogin(false);
+  }
+
+  function afterOpenModal() {
+    subtitle.style.color = "#f00";
+  }
+
   return (
-    <div>
-      <Header />
+    <>
+      <LogInModal isOpen={modalLogin} closeModalLogin={closeModalLogin} />
+      <Header openModal={openModal} />
       <Suspense
         fallback={
           <PropagateLoader
@@ -36,7 +52,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-    </div>
+    </>
   );
 }
 
