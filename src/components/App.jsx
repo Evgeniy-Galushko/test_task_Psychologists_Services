@@ -3,7 +3,9 @@ import { PropagateLoader } from "react-spinners";
 import "../components/App.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "./Header/Header.jsx";
-import LogInModal from "./LogInModal/LogInModal.jsx";
+import LogIn from "./LogIn/LogIn.jsx";
+import ModalCustom from "./ModalCustom/ModalCustom.jsx";
+import Registration from "./Registration/Registration.jsx";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const Psychologists = lazy(() =>
@@ -17,8 +19,9 @@ const NotFoundPage = lazy(() =>
 function App() {
   const [color, setColor] = useState("#3470FF");
   const [modalLogin, setModalLogin] = useState(false);
+  const [modalRegistr, setModalRegistr] = useState(false);
 
-  function openModal() {
+  function openModalLogin() {
     setModalLogin(true);
   }
 
@@ -26,14 +29,27 @@ function App() {
     setModalLogin(false);
   }
 
-  function afterOpenModal() {
-    subtitle.style.color = "#f00";
+  function openModalRegistr() {
+    setModalRegistr(true);
+  }
+
+  function closeModalRegistr() {
+    setModalRegistr(false);
   }
 
   return (
     <>
-      <LogInModal isOpen={modalLogin} closeModalLogin={closeModalLogin} />
-      <Header openModal={openModal} />
+      <ModalCustom isOpen={modalLogin}>
+        <LogIn closeModalLogin={closeModalLogin} />
+      </ModalCustom>
+      <ModalCustom isOpen={modalRegistr}>
+        <Registration closeModalRegistr={closeModalRegistr} />
+      </ModalCustom>
+
+      <Header
+        openModalLogin={openModalLogin}
+        openModalRegistr={openModalRegistr}
+      />
       <Suspense
         fallback={
           <PropagateLoader

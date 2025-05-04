@@ -1,11 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import sprite from "../../img/sprite.svg";
-import s from "./Registration.module.css";
+import s from "./LogIn.module.css";
 
-export default function Registration({ closeModalRegistr }) {
+export default function LogIn({ closeModalLogin }) {
   const format = {
-    name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     email:
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
     password:
@@ -13,9 +12,6 @@ export default function Registration({ closeModalRegistr }) {
   };
 
   const pattern = Yup.object().shape({
-    name: Yup.string()
-      .matches(format.name, "Name is required!")
-      .required("Required"),
     email: Yup.string()
       .matches(format.email, "Too Short!")
       .required("Required"),
@@ -32,17 +28,12 @@ export default function Registration({ closeModalRegistr }) {
   };
 
   const initialValues = {
-    name: "",
     email: "",
     password: "",
   };
   return (
-    <div className={s.boxRegistr}>
-      <button
-        type="button"
-        className={s.buttonClose}
-        onClick={closeModalRegistr}
-      >
+    <div className={s.boxLogin}>
+      <button type="button" className={s.buttonClose} onClick={closeModalLogin}>
         <svg className={s.iconClose}>
           <use href={`${sprite}#icon-close`} />
         </svg>
@@ -53,22 +44,11 @@ export default function Registration({ closeModalRegistr }) {
         validationSchema={pattern}
       >
         <Form>
-          <h2 className={s.titleFomik}>Registration</h2>
+          <h2 className={s.titleFomik}>Log In</h2>
           <p className={s.paragraphFomik}>
-            Thank you for your interest in our platform! In order to register,
-            we need some information. Please provide us with the following
-            information.
+            Welcome back! Please enter your credentials to access your account
+            and continue your search for a psychologist.
           </p>
-          <div className={s.divName}>
-            <Field
-              name="name"
-              type="text"
-              placeholder="Name"
-              className={s.input}
-              required
-            />
-            <ErrorMessage name="email" component="span" />
-          </div>
           <div className={s.divEmail}>
             <Field
               name="email"
@@ -89,12 +69,8 @@ export default function Registration({ closeModalRegistr }) {
             />
             <ErrorMessage name="password" component="span" />
           </div>
-          <button
-            type="submit"
-            className={s.button}
-            onClick={closeModalRegistr}
-          >
-            Sign Up
+          <button type="submit" className={s.button} onClick={closeModalLogin}>
+            Log In
           </button>
         </Form>
       </Formik>

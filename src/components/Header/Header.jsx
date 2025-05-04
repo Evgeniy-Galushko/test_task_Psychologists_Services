@@ -5,7 +5,7 @@ import Navigation from "../Navigation/Navigation.jsx";
 import Auth from "../Auth/Auth.jsx";
 import AuthorizedUser from "../AuthorizedUser/AuthorizedUser.jsx";
 
-export default function Header({ openModal }) {
+export default function Header({ openModalLogin, openModalRegistr }) {
   const auth = false;
   return (
     <header className={s.header}>
@@ -21,7 +21,14 @@ export default function Header({ openModal }) {
           <Navigation />
         </li>
       </ul>
-      {auth ? <AuthorizedUser /> : <Auth openModal={openModal} />}
+      {auth ? (
+        <AuthorizedUser />
+      ) : (
+        <Auth
+          openModalLogin={openModalLogin}
+          openModalRegistr={openModalRegistr}
+        />
+      )}
     </header>
   );
 }
