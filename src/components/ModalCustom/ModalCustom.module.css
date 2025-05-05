@@ -1,0 +1,16 @@
+.buttonClose {
+  position: absolute;
+  top: 10px;
+  left: 510px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  background-color: #fbfbfb;
+}
+
+.iconClose {
+  width: 42px;
+  height: 42px;
+}

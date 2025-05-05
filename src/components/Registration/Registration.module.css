@@ -11,27 +11,6 @@
   /* background-color: aqua; */
 }
 
-.buttonClose {
-  /* position: relative; */
-  position: absolute;
-  /* right: 0px; */
-  /* bottom: 50px; */
-  /* left: 440px; */
-  top: 110px;
-  left: 510px;
-  width: 42px;
-  height: 42px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  background-color: #fbfbfb;
-}
-
-.iconClose {
-  width: 42px;
-  height: 42px;
-}
-
 .titleFomik {
   font-family: "Inter", sans-serif;
   font-weight: 500;

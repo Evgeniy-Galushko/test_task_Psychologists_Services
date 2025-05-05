@@ -1,5 +1,5 @@
 :root {
-  min-width: 1440px;
+  max-width: 1440px;
   --font-family: "Manrope", sans-serif;
   --second-family: "Inter", sans-serif;
   /* display: flex; */
@@ -41,8 +41,4 @@ img {
 
 button {
   cursor: pointer;
-}
-
-div {
-  display: contents;
 }

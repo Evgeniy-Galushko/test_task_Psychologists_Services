@@ -11,10 +11,12 @@ export default function Header({ openModalLogin, openModalRegistr }) {
     <header className={s.header}>
       <ul className={s.headerUl}>
         <li>
-          <NavLink to="/">
-            <svg className={s.logoSvg}>
+          <NavLink to="/" className={s.logo}>
+            {/* <svg className={s.logoSvg}>
               <use href={`${sprite}#icon-Logo`} />
-            </svg>
+            </svg> */}
+            psychologists<span className={s.logoDot}>.</span>
+            <span className={s.logoSpanGreen}>services</span>
           </NavLink>
         </li>
         <li>

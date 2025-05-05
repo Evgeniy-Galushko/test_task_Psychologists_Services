@@ -1,0 +1,6 @@
+.psychologistsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 64px 128px;
+}

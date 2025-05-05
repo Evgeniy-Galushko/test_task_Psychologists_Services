@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import sprite from "../../img/sprite.svg";
 import s from "./LogIn.module.css";
 
-export default function LogIn({ closeModalLogin }) {
+export default function LogIn({ closeModal }) {
   const format = {
     email:
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
@@ -33,11 +33,6 @@ export default function LogIn({ closeModalLogin }) {
   };
   return (
     <div className={s.boxLogin}>
-      <button type="button" className={s.buttonClose} onClick={closeModalLogin}>
-        <svg className={s.iconClose}>
-          <use href={`${sprite}#icon-close`} />
-        </svg>
-      </button>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -69,7 +64,7 @@ export default function LogIn({ closeModalLogin }) {
             />
             <ErrorMessage name="password" component="span" />
           </div>
-          <button type="submit" className={s.button} onClick={closeModalLogin}>
+          <button type="submit" className={s.button} onClick={closeModal}>
             Log In
           </button>
         </Form>

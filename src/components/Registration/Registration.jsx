@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import sprite from "../../img/sprite.svg";
 import s from "./Registration.module.css";
 
-export default function Registration({ closeModalRegistr }) {
+export default function Registration({ closeModal }) {
   const format = {
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     email:
@@ -38,15 +38,6 @@ export default function Registration({ closeModalRegistr }) {
   };
   return (
     <div className={s.boxRegistr}>
-      <button
-        type="button"
-        className={s.buttonClose}
-        onClick={closeModalRegistr}
-      >
-        <svg className={s.iconClose}>
-          <use href={`${sprite}#icon-close`} />
-        </svg>
-      </button>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -89,11 +80,7 @@ export default function Registration({ closeModalRegistr }) {
             />
             <ErrorMessage name="password" component="span" />
           </div>
-          <button
-            type="submit"
-            className={s.button}
-            onClick={closeModalRegistr}
-          >
+          <button type="submit" className={s.button} onClick={closeModal}>
             Sign Up
           </button>
         </Form>

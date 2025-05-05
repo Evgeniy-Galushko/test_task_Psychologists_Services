@@ -39,11 +39,11 @@ function App() {
 
   return (
     <>
-      <ModalCustom isOpen={modalLogin}>
-        <LogIn closeModalLogin={closeModalLogin} />
+      <ModalCustom isOpen={modalLogin} onClose={closeModalLogin}>
+        <LogIn closeModal={closeModalLogin} />
       </ModalCustom>
-      <ModalCustom isOpen={modalRegistr}>
-        <Registration closeModalRegistr={closeModalRegistr} />
+      <ModalCustom isOpen={modalRegistr} onClose={closeModalRegistr}>
+        <Registration closeModal={closeModalRegistr} />
       </ModalCustom>
 
       <Header
