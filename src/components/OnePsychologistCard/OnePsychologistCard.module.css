@@ -26,12 +26,26 @@
   height: 96px;
 }
 
+.AboutTheDoctor {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* align-items: flex-start; */
+}
+
+.boxName {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .speciality {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   color: #8a8a89;
+  margin-bottom: 8px;
 }
 
 .name {
@@ -42,9 +56,17 @@
   color: #191a15;
 }
 
+.boxRatingPrice {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: start; */
+  align-items: start;
+}
+
 .iconRating {
   width: 16px;
   height: 16px;
+  margin-right: 8px;
 }
 
 .ratingPrice {
@@ -55,11 +77,39 @@
   color: #191a15;
 }
 
+.rating {
+  padding-right: 16px;
+  border-right: 1px solid rgba(25, 26, 21, 0.2);
+}
+
+.price {
+  padding-left: 16px;
+  padding-right: 28px;
+}
+
 .ratingPriceColor {
   color: #38cd3e;
 }
 
+.skils {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .skillsBox {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.skillsParagraph {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+
   display: inline-block;
   box-sizing: border-box;
   border-radius: 24px;
@@ -67,16 +117,14 @@
   background-color: #f3f3f3;
 }
 
-.skills {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #8a8a89;
-}
-
 .skillsColor {
   color: #191a15;
+}
+
+.aboutButton {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .about {
@@ -98,4 +146,73 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #191a15;
+  width: 82px;
 }
+
+/*-------------comments-----------*/
+.boxReviews {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.oneReview {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(84, 190, 150, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: #54be96;
+}
+
+.username {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #191a15;
+}
+
+.divIconRating {
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewsRating {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #191a15;
+}
+
+.buttonHideReviews {
+  border: none;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #191a15;
+  width: 102px;
+}
+/*---------------------------------*/

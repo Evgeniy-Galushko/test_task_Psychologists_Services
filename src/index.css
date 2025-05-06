@@ -1,5 +1,5 @@
 :root {
-  max-width: 1440px;
+  min-width: 1440px;
   --font-family: "Manrope", sans-serif;
   --second-family: "Inter", sans-serif;
   /* display: flex; */

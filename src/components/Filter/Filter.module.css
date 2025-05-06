@@ -1,0 +1,59 @@
+.filter {
+}
+
+.formFilter {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+}
+
+.divBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.labelBox {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8d929a;
+}
+
+.boxSelect {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  width: 204px;
+  height: 44px;
+  background: url("/src/img/Property.png") 94% / 8% no-repeat #f7f7f7;
+
+  content: "";
+  display: block;
+  transition: 0.2s ease-in;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #dadde1;
+  }
+}
+
+.boxOption {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
