@@ -1,7 +1,7 @@
 import s from "./HomePage.module.css";
 import sprite from "../../img/sprite.svg";
 
-export default function HomePage() {
+export default function HomePage({ openModalRegistr }) {
   return (
     <ul className={s.sectionHome}>
       <li className={s.greetings}>
@@ -13,7 +13,11 @@ export default function HomePage() {
           We help you to reveal your potential, overcome challenges and find a
           guide in your own life with the help of our experienced psychologists.
         </p>
-        <button className={s.buttonHome}>
+        <button
+          className={s.buttonHome}
+          onClick={openModalRegistr}
+          type="button"
+        >
           Get started
           <svg className={s.icon}>
             <use href={`${sprite}#icon-Arrow-16`} />

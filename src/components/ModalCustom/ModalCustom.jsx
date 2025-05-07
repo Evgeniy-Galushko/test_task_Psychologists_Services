@@ -24,7 +24,7 @@ export default function ModalCustom({ children, isOpen, onClose }) {
   return (
     <Modal
       isOpen={isOpen}
-      // onRequestClose={onClose}
+      onRequestClose={onClose}
       style={customStyles}
       contentLabel="Example Modal"
     >

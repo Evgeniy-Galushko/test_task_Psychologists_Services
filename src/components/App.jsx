@@ -62,7 +62,10 @@ function App() {
         }
       >
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={<HomePage openModalRegistr={openModalRegistr} />}
+          />
           <Route path="/psychologists" element={<Psychologists />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -52,6 +52,13 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: #fbfbfb;
+
+  transition: background-color 400ms linear;
+
+  &:hover {
+    background-color: #36a379;
+    transition: background-color 400ms linear;
+  }
 }
 
 .icon {

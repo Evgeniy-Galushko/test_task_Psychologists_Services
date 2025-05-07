@@ -2,9 +2,24 @@ import s from "./OnePsychologistCard.module.css";
 import sprite from "../../img/sprite.svg";
 import Favorites from "../Favorites/Favorites.jsx";
 import clsx from "clsx";
+import Reviews from "../Reviews/Reviews.jsx";
+import ModalCustom from "../ModalCustom/ModalCustom.jsx";
+import MakeAnAppointment from "../MakeAnAppointment/MakeAnAppointment.jsx";
 import { useState } from "react";
 
 export default function OnePsychologistCard({ psychologists }) {
+  const [modalAppointment, setModalAppointment] = useState(false);
+  if (!psychologists) {
+    return;
+  }
+
+  function openModalAppointment() {
+    setModalAppointment(true);
+  }
+
+  function closeModalAppointment() {
+    setModalAppointment(false);
+  }
   return psychologists.map(
     (
       {
@@ -21,21 +36,18 @@ export default function OnePsychologistCard({ psychologists }) {
       },
       index
     ) => {
-      const [buttonReadMore, setButtonReadMore] = useState(true);
-      const [userReviews, setUserReviews] = useState(false);
-
-      const handlClickReadMore = () => {
-        setButtonReadMore(false);
-        setUserReviews(true);
-      };
-
-      const handlClickHideReviews = () => {
-        setButtonReadMore(true);
-        setUserReviews(false);
-      };
-
       return (
         <li key={index} className={s.oneCart}>
+          <ModalCustom
+            isOpen={modalAppointment}
+            onClose={closeModalAppointment}
+          >
+            <MakeAnAppointment
+              closeModal={closeModalAppointment}
+              avatar={avatar_url}
+              name={name}
+            />
+          </ModalCustom>
           <ul className={s.contentBox}>
             <li className={s.boxImg}>
               <img
@@ -94,52 +106,12 @@ export default function OnePsychologistCard({ psychologists }) {
                   <p className={s.about}>{about}</p>
                 </li>
                 <li>
-                  {buttonReadMore && (
-                    <button
-                      type="button"
-                      className={s.buttonReadMore}
-                      onClick={handlClickReadMore}
-                    >
-                      Read more
-                    </button>
-                  )}
+                  <Reviews
+                    reviews={reviews}
+                    openModalAppointment={openModalAppointment}
+                  />
                 </li>
               </ul>
-              {userReviews && (
-                <ul className={s.boxReviews}>
-                  {reviews.map(({ comment, rating, reviewer }, index) => {
-                    console.log(reviewer.slice(0, 1));
-                    return (
-                      <li key={index}>
-                        <ul className={s.oneReview}>
-                          <li>
-                            <div className={s.avatar}>
-                              <p className={s.letter}>{reviewer.slice(0, 1)}</p>
-                            </div>
-                          </li>
-                          <li>
-                            <h3 className={s.username}>{reviewer}</h3>
-                            <div className={s.divIconRating}>
-                              <svg className={s.iconRating}>
-                                <use href={`${sprite}#icon-Star-2`} />
-                              </svg>
-                              <p className={s.reviewsRating}>{rating}</p>
-                            </div>
-                          </li>
-                        </ul>
-                        <p className={s.about}>{comment}</p>
-                      </li>
-                    );
-                  })}
-                  <button
-                    type="button"
-                    className={s.buttonHideReviews}
-                    onClick={handlClickHideReviews}
-                  >
-                    Hide reviews
-                  </button>
-                </ul>
-              )}
             </li>
           </ul>
         </li>

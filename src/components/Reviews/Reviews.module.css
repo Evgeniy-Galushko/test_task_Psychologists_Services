@@ -1,0 +1,126 @@
+.reviews {
+  margin-top: 48px;
+}
+
+.about {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(25, 26, 21, 0.5);
+}
+
+.iconRating {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.buttonReadMore {
+  border: none;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #191a15;
+  width: 82px;
+}
+
+.boxReviews {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.oneReview {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(84, 190, 150, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: #54be96;
+}
+
+.username {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #191a15;
+}
+
+.divIconRating {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewsRating {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #191a15;
+}
+
+.buttonHideReviews {
+  border: none;
+  padding: 0;
+  background-color: #fbfbfb;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #191a15;
+  width: 102px;
+}
+
+.boxButton {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttonMakeAnAppointment {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 32px;
+  width: 227px;
+  height: 48px;
+  background-color: #54be96;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  transition: background-color 400ms linear;
+
+  &:hover {
+    background-color: #36a379;
+    transition: background-color 400ms linear;
+  }
+}

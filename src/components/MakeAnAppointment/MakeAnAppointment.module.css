@@ -1,10 +1,10 @@
-.boxRegistr {
+.boxAppointment {
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
   border-radius: 30px;
-  width: 565px;
-  height: 579px;
+  width: 599px;
+  /* height: 859px; */
   padding: 64px;
   background-color: #fbfbfb;
 
@@ -31,9 +31,32 @@
   margin-bottom: 40px;
 }
 
-.divName {
-  display: block;
-  margin-bottom: 18px;
+.boxDoctor {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+
+.imgDoctor {
+  border-radius: 15px;
+  width: 44px;
+  height: 44px;
+}
+
+.doctorParagraph {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8a8a89;
+}
+
+.doctorName {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #191a15;
 }
 
 .divEmail {
@@ -48,12 +71,6 @@
   padding: 16px 18px;
   width: 438px;
   height: 52px;
-
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #191a15;
 }
 
 .divPassword {
@@ -71,19 +88,19 @@
 
 .button {
   box-sizing: border-box;
+  border: none;
   border-radius: 30px;
-  padding: 16px 189px;
-  width: 438px;
+  padding: 16px 217px;
+  width: 472px;
   height: 52px;
   background-color: #54be96;
-  border: none;
+
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: #fbfbfb;
-
   transition: background-color 400ms linear;
 
   &:hover {
