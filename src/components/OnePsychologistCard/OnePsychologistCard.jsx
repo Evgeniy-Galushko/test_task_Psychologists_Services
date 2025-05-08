@@ -3,9 +3,9 @@ import sprite from "../../img/sprite.svg";
 import Favorites from "../Favorites/Favorites.jsx";
 import clsx from "clsx";
 import Reviews from "../Reviews/Reviews.jsx";
-import ModalCustom from "../ModalCustom/ModalCustom.jsx";
 import MakeAnAppointment from "../MakeAnAppointment/MakeAnAppointment.jsx";
 import { useState } from "react";
+import ModalAppointment from "../ModalAppointment/ModalAppointment.jsx";
 
 export default function OnePsychologistCard({ psychologists }) {
   const [modalAppointment, setModalAppointment] = useState(false);
@@ -38,7 +38,7 @@ export default function OnePsychologistCard({ psychologists }) {
     ) => {
       return (
         <li key={index} className={s.oneCart}>
-          <ModalCustom
+          <ModalAppointment
             isOpen={modalAppointment}
             onClose={closeModalAppointment}
           >
@@ -47,7 +47,7 @@ export default function OnePsychologistCard({ psychologists }) {
               avatar={avatar_url}
               name={name}
             />
-          </ModalCustom>
+          </ModalAppointment>
           <ul className={s.contentBox}>
             <li className={s.boxImg}>
               <img

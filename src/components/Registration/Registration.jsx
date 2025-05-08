@@ -29,6 +29,8 @@ export default function Registration({ closeModal }) {
 
   const handleSubmit = (values, actions) => {
     console.log(values);
+    actions.resetForm();
+    closeModal();
   };
 
   const initialValues = {
@@ -80,7 +82,7 @@ export default function Registration({ closeModal }) {
             />
             <ErrorMessage name="password" component="span" />
           </div>
-          <button type="submit" className={s.button} onClick={closeModal}>
+          <button type="submit" className={s.button}>
             Sign Up
           </button>
         </Form>

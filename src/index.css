@@ -42,3 +42,9 @@ img {
 button {
   cursor: pointer;
 }
+
+div {
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+}

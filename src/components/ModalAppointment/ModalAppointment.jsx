@@ -1,22 +1,23 @@
 import sprite from "../../img/sprite.svg";
-import s from "./ModalCustom.module.css";
+import s from "./ModalAppointment.module.css";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
-export default function ModalCustom({ children, isOpen, onClose }) {
+export default function ModalAppointment({ children, isOpen, onClose }) {
   const customStyles = {
     overlay: {
-      overflow: "scroll",
-      scrollbarWidth: "thin",
-      backgroundColor: "#191a1599",
+      backgroundColor: "rgba(25, 26, 21, 0.3)",
     },
     content: {
       border: "none",
+      overflowY: "scroll",
       padding: "0",
       borderRadius: "30px",
       top: "50%",
       left: "50%",
       right: "auto",
+      with: "auto",
+      height: "100%",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",

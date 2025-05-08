@@ -25,6 +25,9 @@ export default function LogIn({ closeModal }) {
 
   const handleSubmit = (values, actions) => {
     console.log(values);
+
+    actions.resetForm();
+    closeModal();
   };
 
   const initialValues = {
@@ -64,7 +67,7 @@ export default function LogIn({ closeModal }) {
             />
             <ErrorMessage name="password" component="span" />
           </div>
-          <button type="submit" className={s.button} onClick={closeModal}>
+          <button type="submit" className={s.button}>
             Log In
           </button>
         </Form>

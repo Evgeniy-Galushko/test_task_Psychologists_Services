@@ -4,19 +4,24 @@ import s from "./MakeAnAppointment.module.css";
 
 export default function MakeAnAppointment({ closeModal, avatar, name }) {
   const format = {
+    name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
+    number: "",
     email:
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-    password:
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/,
   };
 
   const pattern = Yup.object().shape({
-    email: Yup.string()
-      .matches(format.email, "Too Short!")
+    name: Yup.string()
+      .matches(format.name, "Name is required!")
       .required("Required"),
-    password: Yup.string()
+    number: Yup.string()
+      .matches(format.number, "Too Short!")
+      // .min(9, "Too Short!")
+      // .max(13, "Too Long!")
+      .required("Required"),
+    email: Yup.string()
       .matches(
-        format.password,
+        format.email,
         "The password must contain: at least one number; !@#$%^&* - the string contains at least one special character; the string contains at least one lowercase Latin letter; the string contains at least one uppercase Latin letter; the string consists of at least 8 of the above-mentioned characters."
       )
       .required("Required"),
@@ -24,11 +29,16 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
 
   const handleSubmit = (values, actions) => {
     console.log(values);
+    actions.resetForm();
+    closeModal();
   };
 
   const initialValues = {
+    name: "",
+    number: "",
+    time: "",
     email: "",
-    password: "",
+    comment: "",
   };
   return (
     <div className={s.boxAppointment}>
@@ -56,7 +66,38 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
               <h3 className={s.doctorName}>{name}</h3>
             </li>
           </ul>
-          <div className={s.divEmail}>
+          <div className={s.oneInputBox}>
+            <Field
+              name="name"
+              type="text"
+              placeholder="Name"
+              className={s.input}
+              required
+            />
+            <ErrorMessage name="name" component="span" />
+          </div>
+          <ul className={s.boxNumberTime}>
+            <li>
+              <Field
+                name="number"
+                type="tel"
+                placeholder="+380"
+                className={s.inputNumberTime}
+                required
+              />
+              <ErrorMessage name="number" component="span" />
+            </li>
+            <li>
+              <Field
+                name="time"
+                type="time"
+                className={s.inputNumberTime}
+                required
+              />
+              <ErrorMessage name="time" component="span" />
+            </li>
+          </ul>
+          <div className={s.oneInputBox}>
             <Field
               name="email"
               type="email"
@@ -66,17 +107,13 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
             />
             <ErrorMessage name="email" component="span" />
           </div>
-          <div className={s.divPassword}>
-            <Field
-              name="password"
-              type="password"
-              placeholder="Password"
-              className={s.input}
-              required
-            />
-            <ErrorMessage name="password" component="span" />
-          </div>
-          <button type="submit" className={s.button} onClick={closeModal}>
+          <Field
+            as="textarea"
+            name="comment"
+            placeholder="Comment"
+            className={s.textarea}
+          />
+          <button type="submit" className={s.button}>
             Send
           </button>
         </Form>
