@@ -15,7 +15,6 @@ export default function Psychologists() {
     setPage(page + 1);
   };
   const numberOfObjects = page * limit;
-
   const onePage = db.slice(0, numberOfObjects);
 
   return (

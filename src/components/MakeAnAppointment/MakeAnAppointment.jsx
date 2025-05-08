@@ -5,7 +5,7 @@ import s from "./MakeAnAppointment.module.css";
 export default function MakeAnAppointment({ closeModal, avatar, name }) {
   const format = {
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
-    number: "",
+    number: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
     email:
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
   };
@@ -15,7 +15,7 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
       .matches(format.name, "Name is required!")
       .required("Required"),
     number: Yup.string()
-      .matches(format.number, "Too Short!")
+      .matches(format.number, "The number is not correct!")
       // .min(9, "Too Short!")
       // .max(13, "Too Long!")
       .required("Required"),
