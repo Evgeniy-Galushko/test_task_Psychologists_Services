@@ -1,9 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import sprite from "../../img/sprite.svg";
 import s from "./LogIn.module.css";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
 
 export default function LogIn({ closeModal }) {
+  const dispatch = useDispatch();
+
   const format = {
     email:
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
@@ -24,8 +27,14 @@ export default function LogIn({ closeModal }) {
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
-
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, values.email, values.password)
+      .then(console.log)
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
     actions.resetForm();
     closeModal();
   };

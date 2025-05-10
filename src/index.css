@@ -44,6 +44,7 @@ button {
 }
 
 div {
+  display: block;
   &::-webkit-scrollbar {
     width: 0px;
   }

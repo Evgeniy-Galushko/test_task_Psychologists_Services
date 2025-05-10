@@ -17,7 +17,7 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const [color, setColor] = useState("#3470FF");
+  const [color, setColor] = useState("#54be96");
   const [modalLogin, setModalLogin] = useState(false);
   const [modalRegistr, setModalRegistr] = useState(false);
 
@@ -45,7 +45,6 @@ function App() {
       <ModalCustom isOpen={modalRegistr} onClose={closeModalRegistr}>
         <Registration closeModal={closeModalRegistr} />
       </ModalCustom>
-
       <Header
         openModalLogin={openModalLogin}
         openModalRegistr={openModalRegistr}
