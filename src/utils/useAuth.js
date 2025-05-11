@@ -10,3 +10,5 @@ export default function useAuth() {
     id,
   };
 }
+
+// ("https://psychologists-services-1c5d3-default-rtdb.firebaseio.com/");

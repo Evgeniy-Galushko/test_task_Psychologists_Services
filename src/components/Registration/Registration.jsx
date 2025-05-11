@@ -3,8 +3,11 @@ import * as Yup from "yup";
 import s from "./Registration.module.css";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import DisplayPassword from "../DisplayPassword/DisplayPassword.jsx";
 
 export default function Registration({ closeModal }) {
+  const [displayPassword, setDisplayPassword] = useState(false);
   const dispatch = useDispatch();
 
   const format = {
@@ -51,6 +54,11 @@ export default function Registration({ closeModal }) {
   };
   return (
     <div className={s.boxRegistr}>
+      <DisplayPassword
+        displayPassword={displayPassword}
+        setDisplayPassword={setDisplayPassword}
+        number={0}
+      />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -86,7 +94,7 @@ export default function Registration({ closeModal }) {
           <div className={s.divPassword}>
             <Field
               name="password"
-              type="password"
+              type={displayPassword ? "text" : "password"}
               placeholder="Password"
               className={s.input}
               required
