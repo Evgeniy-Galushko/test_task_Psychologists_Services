@@ -1,12 +1,18 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import s from "./Registration.module.css";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useId, useState } from "react";
 import DisplayPassword from "../DisplayPassword/DisplayPassword.jsx";
+import { setUser } from "../../redux/slices/userSlice.js";
 
 export default function Registration({ closeModal }) {
+  const idPassword = useId();
   const [displayPassword, setDisplayPassword] = useState(false);
   const dispatch = useDispatch();
 
@@ -36,7 +42,21 @@ export default function Registration({ closeModal }) {
   const handleSubmit = (values, actions) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then(console.log)
+      .then(({ user }) => {
+        updateProfile(user, {
+          displayName: values.name,
+        }).then(() => {
+          dispatch(
+            setUser({
+              name: user.displayName,
+              email: user.email,
+              token: user.accessToken,
+              id: user.uid,
+            })
+          );
+        });
+        console.log(user);
+      })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -54,11 +74,6 @@ export default function Registration({ closeModal }) {
   };
   return (
     <div className={s.boxRegistr}>
-      <DisplayPassword
-        displayPassword={displayPassword}
-        setDisplayPassword={setDisplayPassword}
-        number={0}
-      />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -92,11 +107,19 @@ export default function Registration({ closeModal }) {
             <ErrorMessage name="email" component="span" />
           </div>
           <div className={s.divPassword}>
+            <label htmlFor={idPassword} className={s.labelPassword}>
+              <DisplayPassword
+                displayPassword={displayPassword}
+                setDisplayPassword={setDisplayPassword}
+                number={0}
+              />
+            </label>
             <Field
               name="password"
               type={displayPassword ? "text" : "password"}
               placeholder="Password"
               className={s.input}
+              id={idPassword}
               required
             />
             <ErrorMessage name="password" component="span" />

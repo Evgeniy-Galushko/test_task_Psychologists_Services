@@ -4,9 +4,11 @@ import sprite from "../../img/sprite.svg";
 import Navigation from "../Navigation/Navigation.jsx";
 import Auth from "../Auth/Auth.jsx";
 import AuthorizedUser from "../AuthorizedUser/AuthorizedUser.jsx";
+import { selectToken } from "../../redux/slices/selectors.js";
+import { useSelector } from "react-redux";
 
 export default function Header({ openModalLogin, openModalRegistr }) {
-  const auth = false;
+  const token = useSelector(selectToken);
   return (
     <header className={s.header}>
       <ul className={s.headerUl}>
@@ -23,7 +25,7 @@ export default function Header({ openModalLogin, openModalRegistr }) {
           <Navigation />
         </li>
       </ul>
-      {auth ? (
+      {token ? (
         <AuthorizedUser />
       ) : (
         <Auth

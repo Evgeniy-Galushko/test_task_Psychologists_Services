@@ -4,9 +4,11 @@ import s from "./LogIn.module.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import DisplayPassword from "../DisplayPassword/DisplayPassword.jsx";
-import { useState } from "react";
+import { useId, useState } from "react";
+import { setUser } from "../../redux/slices/userSlice.js";
 
 export default function LogIn({ closeModal }) {
+  const idPassword = useId();
   const [displayPassword, setDisplayPassword] = useState(false);
   const dispatch = useDispatch();
 
@@ -32,7 +34,16 @@ export default function LogIn({ closeModal }) {
   const handleSubmit = (values, actions) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, values.email, values.password)
-      .then(console.log)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            name: user.displayName,
+            email: user.email,
+            token: user.accessToken,
+            id: user.uid,
+          })
+        );
+      })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -48,11 +59,6 @@ export default function LogIn({ closeModal }) {
   };
   return (
     <div className={s.boxLogin}>
-      <DisplayPassword
-        displayPassword={displayPassword}
-        setDisplayPassword={setDisplayPassword}
-        number={1}
-      />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -75,11 +81,19 @@ export default function LogIn({ closeModal }) {
             <ErrorMessage name="email" component="span" />
           </div>
           <div className={s.divPassword}>
+            <label htmlFor={idPassword} className={s.labelPassword}>
+              <DisplayPassword
+                displayPassword={displayPassword}
+                setDisplayPassword={setDisplayPassword}
+                number={1}
+              />
+            </label>
             <Field
               name="password"
               type={displayPassword ? "text" : "password"}
               placeholder="Password"
               className={s.input}
+              id={idPassword}
               required
             />
             <ErrorMessage name="password" component="span" />

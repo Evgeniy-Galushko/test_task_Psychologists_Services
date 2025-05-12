@@ -2,21 +2,35 @@ import { useId, useState } from "react";
 import sprite from "../../img/sprite.svg";
 import s from "./Favorites.module.css";
 import { useDispatch, useSelector } from "react-redux";
-// import { selectFavoritetСar } from "../../redux/cars/selectors.js";
-// import { requestFavoritetСarId } from "../../redux/cars/operations.js";
+import { selectToken } from "../../redux/slices/selectors.js";
+import ModalCustom from "../ModalCustom/ModalCustom.jsx";
+import AuthorizationWarning from "../AuthorizationWarning/AuthorizationWarning.jsx";
 
 export default function Favorites() {
   const id = useId();
   const [favorites, setFavorites] = useState(false);
+  const [modalRegisterOrLogin, setModalRegisterOrLogin] = useState(false);
+  const token = useSelector(selectToken);
   // const dispatch = useDispatch();
   // const favoritesList = useSelector(selectFavoritetСar);
 
   const handlChange = (evt) => {
+    console.log(!!token);
+    if (!token) {
+      return setModalRegisterOrLogin(true);
+    }
     setFavorites(evt.target.checked);
-    // dispatch(requestFavoritetСarId(id));
   };
+
+  function closeModalLogin() {
+    setModalRegisterOrLogin(false);
+  }
+
   return (
     <div className={s.favorites}>
+      <ModalCustom isOpen={modalRegisterOrLogin} onClose={closeModalLogin}>
+        <AuthorizationWarning />
+      </ModalCustom>
       <input
         className={s.input}
         id={id}

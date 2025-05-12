@@ -38,7 +38,7 @@
 
 .divEmail {
   display: block;
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
 }
 
 .input {
@@ -90,4 +90,14 @@
     background-color: #36a379;
     transition: background-color 400ms linear;
   }
+}
+
+.labelPassword {
+  display: block;
+  position: relative;
+  width: 26px;
+  height: 26px;
+
+  top: 40px;
+  left: 405px;
 }

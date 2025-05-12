@@ -1,8 +1,11 @@
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import s from "./Navigation.module.css";
+import { useSelector } from "react-redux";
+import { selectToken } from "../../redux/slices/selectors.js";
 
 export default function Navigation() {
+  const tokenBoolean = useSelector(selectToken);
   return (
     <nav className={s.navHeder}>
       <NavLink
@@ -17,12 +20,14 @@ export default function Navigation() {
       >
         Psychologists
       </NavLink>
-      <NavLink
-        to="/favorites"
-        className={({ isActive }) => clsx(s.link, isActive && s.activeFav)}
-      >
-        Favorites
-      </NavLink>
+      {tokenBoolean && (
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) => clsx(s.link, isActive && s.activeFav)}
+        >
+          Favorites
+        </NavLink>
+      )}
     </nav>
   );
 }
