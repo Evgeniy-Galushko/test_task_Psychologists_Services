@@ -65,7 +65,15 @@ function App() {
             path="/"
             element={<HomePage openModalRegistr={openModalRegistr} />}
           />
-          <Route path="/psychologists" element={<Psychologists />} />
+          <Route
+            path="/psychologists"
+            element={
+              <Psychologists
+                setModalLogin={setModalLogin}
+                setModalRegistr={setModalRegistr}
+              />
+            }
+          />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

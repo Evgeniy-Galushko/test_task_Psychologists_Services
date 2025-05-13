@@ -1,11 +1,75 @@
 .boxWarningAvt {
   box-sizing: border-box;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: baseline;
   flex-direction: column;
+  gap: 35px;
 
   width: 560px;
   height: 300px;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.025;
+  letter-spacing: -0.02em;
+  color: #191a15;
+  text-align: center;
+}
+
+.boxButton {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 35px;
+}
+
+.buttonLogin {
+  box-sizing: border-box;
+  border: none;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  border-radius: 30px;
+  padding: 14px 38px;
+  width: 124px;
+  height: 48px;
+  background-color: #fbfbfb;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #191a15;
+  transition: background-color 400ms linear;
+
+  &:hover {
+    background-color: #f6f5f5;
+    transition: background-color 400ms linear;
+  }
+}
+
+.buttonRegistration {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 40px;
+  width: 171px;
+  height: 48px;
+  background-color: #54be96;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  transition: background-color 400ms linear;
+
+  &:hover {
+    background-color: #36a379;
+    transition: background-color 400ms linear;
+  }
 }

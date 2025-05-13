@@ -7,7 +7,11 @@ import MakeAnAppointment from "../MakeAnAppointment/MakeAnAppointment.jsx";
 import { useState } from "react";
 import ModalAppointment from "../ModalAppointment/ModalAppointment.jsx";
 
-export default function OnePsychologistCard({ psychologists }) {
+export default function OnePsychologistCard({
+  psychologists,
+  setModalLogin,
+  setModalRegistr,
+}) {
   const [modalAppointment, setModalAppointment] = useState(false);
   if (!psychologists) {
     return;
@@ -75,7 +79,10 @@ export default function OnePsychologistCard({ psychologists }) {
                       {price_per_hour}&#x24;
                     </span>
                   </p>
-                  <Favorites />
+                  <Favorites
+                    setModalLogin={setModalLogin}
+                    setModalRegistr={setModalRegistr}
+                  />
                 </li>
               </ul>
               <ul className={s.skils}>

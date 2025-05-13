@@ -6,7 +6,7 @@ import { selectToken } from "../../redux/slices/selectors.js";
 import ModalCustom from "../ModalCustom/ModalCustom.jsx";
 import AuthorizationWarning from "../AuthorizationWarning/AuthorizationWarning.jsx";
 
-export default function Favorites() {
+export default function Favorites({ setModalLogin, setModalRegistr }) {
   const id = useId();
   const [favorites, setFavorites] = useState(false);
   const [modalRegisterOrLogin, setModalRegisterOrLogin] = useState(false);
@@ -24,12 +24,25 @@ export default function Favorites() {
 
   function closeModalLogin() {
     setModalRegisterOrLogin(false);
+    setModalLogin(true);
+  }
+
+  function closeModalRegister() {
+    setModalRegisterOrLogin(false);
+    setModalRegistr(true);
+  }
+
+  function closeModa() {
+    setModalRegisterOrLogin(false);
   }
 
   return (
     <div className={s.favorites}>
-      <ModalCustom isOpen={modalRegisterOrLogin} onClose={closeModalLogin}>
-        <AuthorizationWarning />
+      <ModalCustom isOpen={modalRegisterOrLogin} onClose={closeModa}>
+        <AuthorizationWarning
+          onCloseLogin={closeModalLogin}
+          onCloseRegister={closeModalRegister}
+        />
       </ModalCustom>
       <input
         className={s.input}
