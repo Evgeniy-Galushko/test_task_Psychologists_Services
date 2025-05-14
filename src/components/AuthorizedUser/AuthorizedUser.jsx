@@ -8,8 +8,6 @@ export default function AuthorizedUser() {
   const dispatch = useDispatch();
   const nameUser = useSelector(selectName);
 
-  console.log(nameUser);
-
   const hendleClick = () => {
     dispatch(removeUser());
   };

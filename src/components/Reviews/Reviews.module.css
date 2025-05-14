@@ -105,6 +105,7 @@
 
 .buttonMakeAnAppointment {
   border: none;
+  box-sizing: border-box;
   border-radius: 30px;
   padding: 14px 32px;
   width: 227px;

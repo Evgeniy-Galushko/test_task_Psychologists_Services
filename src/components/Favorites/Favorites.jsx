@@ -6,8 +6,8 @@ import { selectToken } from "../../redux/slices/selectors.js";
 import ModalCustom from "../ModalCustom/ModalCustom.jsx";
 import AuthorizationWarning from "../AuthorizationWarning/AuthorizationWarning.jsx";
 
-export default function Favorites({ setModalLogin, setModalRegistr }) {
-  const id = useId();
+export default function Favorites({ id, setModalLogin, setModalRegistr }) {
+  // const idInput = useId();
   const [favorites, setFavorites] = useState(false);
   const [modalRegisterOrLogin, setModalRegisterOrLogin] = useState(false);
   const token = useSelector(selectToken);
@@ -15,10 +15,10 @@ export default function Favorites({ setModalLogin, setModalRegistr }) {
   // const favoritesList = useSelector(selectFavoritetСar);
 
   const handlChange = (evt) => {
-    console.log(!!token);
     if (!token) {
       return setModalRegisterOrLogin(true);
     }
+
     setFavorites(evt.target.checked);
   };
 

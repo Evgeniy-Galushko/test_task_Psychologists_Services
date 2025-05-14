@@ -7,6 +7,12 @@ import LogIn from "./LogIn/LogIn.jsx";
 import ModalCustom from "./ModalCustom/ModalCustom.jsx";
 import Registration from "./Registration/Registration.jsx";
 
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { get } from "firebase/database";
+import { dbRef } from "../../firebase.js";
+import { setDoctors } from "../redux/slices/userSlice.js";
+
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const Psychologists = lazy(() =>
   import("../pages/Psychologists/Psychologists.jsx")
@@ -20,6 +26,24 @@ function App() {
   const [color, setColor] = useState("#54be96");
   const [modalLogin, setModalLogin] = useState(false);
   const [modalRegistr, setModalRegistr] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchDb = async () => {
+      await get(dbRef)
+        .then((doctors) => {
+          if (doctors.exists()) {
+            dispatch(setDoctors({ db: doctors.val() }));
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    fetchDb();
+  }, [dispatch]);
 
   function openModalLogin() {
     setModalLogin(true);

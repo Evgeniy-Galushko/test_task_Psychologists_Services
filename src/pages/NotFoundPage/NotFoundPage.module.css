@@ -1,1 +1,45 @@
+.notFoundPage {
+  /* max-width: 1440px; */
+  height: 700px;
+  background: url("../../img/brain.png"), rgba(84, 190, 150, 0.2);
+  background-size: 50%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
 
+.div {
+  margin: 0 auto;
+  width: 850px;
+  position: relative;
+  top: 350px;
+}
+
+.title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+  text-align: center;
+  color: #2e6d55;
+  margin-bottom: 40px;
+}
+
+.link {
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 12px 99px;
+  width: 276px;
+  height: 44px;
+  background-color: #54be96;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+  margin-left: 237px;
+
+  &:hover {
+    background-color: #36a379;
+    transition: background-color 400ms linear;
+  }
+}

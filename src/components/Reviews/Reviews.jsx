@@ -2,8 +2,9 @@ import { useState } from "react";
 import sprite from "../../img/sprite.svg";
 import s from "./Reviews.module.css";
 import clsx from "clsx";
+import { NavLink } from "react-router-dom";
 
-export default function Reviews({ reviews, openModalAppointment }) {
+export default function Reviews({ reviews, openModalAppointment, id }) {
   const [buttonReadMore, setButtonReadMore] = useState(true);
   const [userReviews, setUserReviews] = useState(false);
 
@@ -70,6 +71,14 @@ export default function Reviews({ reviews, openModalAppointment }) {
               >
                 Make an appointment
               </button>
+
+              {/* <NavLink
+                to={`${id}`}
+                className={s.buttonMakeAnAppointment}
+                onClick={openModalAppointment}
+              >
+                Make an appointment
+              </NavLink> */}
             </li>
           </ul>
         )}

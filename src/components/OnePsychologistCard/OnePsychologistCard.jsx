@@ -24,24 +24,23 @@ export default function OnePsychologistCard({
   function closeModalAppointment() {
     setModalAppointment(false);
   }
+
   return psychologists.map(
-    (
-      {
-        about,
-        avatar_url,
-        experience,
-        initial_consultation,
-        license,
-        name,
-        price_per_hour,
-        rating,
-        reviews,
-        specialization,
-      },
-      index
-    ) => {
+    ({
+      id,
+      about,
+      avatar_url,
+      experience,
+      initial_consultation,
+      license,
+      name,
+      price_per_hour,
+      rating,
+      reviews,
+      specialization,
+    }) => {
       return (
-        <li key={index} className={s.oneCart}>
+        <li key={id} className={s.oneCart}>
           <ModalAppointment
             isOpen={modalAppointment}
             onClose={closeModalAppointment}
@@ -50,6 +49,7 @@ export default function OnePsychologistCard({
               closeModal={closeModalAppointment}
               avatar={avatar_url}
               name={name}
+              id={id}
             />
           </ModalAppointment>
           <ul className={s.contentBox}>
@@ -80,6 +80,7 @@ export default function OnePsychologistCard({
                     </span>
                   </p>
                   <Favorites
+                    id={id}
                     setModalLogin={setModalLogin}
                     setModalRegistr={setModalRegistr}
                   />
@@ -115,6 +116,7 @@ export default function OnePsychologistCard({
                 <li>
                   <Reviews
                     reviews={reviews}
+                    id={id}
                     openModalAppointment={openModalAppointment}
                   />
                 </li>

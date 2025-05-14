@@ -1,8 +1,22 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import s from "./MakeAnAppointment.module.css";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { selectDb } from "../../redux/slices/selectors.js";
+import { useLocation, useParams } from "react-router-dom";
 
 export default function MakeAnAppointment({ closeModal, avatar, name }) {
+  const database = useSelector(selectDb);
+  const { id } = useParams();
+  console.log(id);
+
+  // console.log(database);
+  // if (database) {
+  //   const oneDoctor = database.filter((doctor) => doctor.id === id);
+  //   console.log(oneDoctor);
+  // }
+
   const format = {
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     number: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
@@ -15,7 +29,7 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
       .matches(format.name, "Name is required!")
       .required("Required"),
     number: Yup.string()
-      .matches(format.number, "The number is not correct!")
+      .matches(format.number, `The number is not correct "+380971234567"!`)
       // .min(9, "Too Short!")
       // .max(13, "Too Long!")
       .required("Required"),
@@ -29,6 +43,7 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
 
   const handleSubmit = (values, actions) => {
     console.log(values);
+    toast.success("You have made an appointment with a doctor!");
     actions.resetForm();
     closeModal();
   };
@@ -40,6 +55,7 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
     email: "",
     comment: "",
   };
+
   return (
     <div className={s.boxAppointment}>
       <Formik
@@ -112,6 +128,7 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
             name="comment"
             placeholder="Comment"
             className={s.textarea}
+            required
           />
           <button type="submit" className={s.button}>
             Send
