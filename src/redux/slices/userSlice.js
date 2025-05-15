@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
+    favorites: [],
     db: [],
     name: null,
     email: null,
@@ -22,6 +23,13 @@ const userSlice = createSlice({
     setDoctors(state, action) {
       state.db = action.payload.db;
     },
+    setFavoritesDb(state, action) {
+      state.favorites = [...state.favorites, ...action.payload];
+    },
+
+    removeFromFavorites(state, action) {
+      state.favorites = [...action.payload];
+    },
     removeUser(state) {
       state.email = null;
       state.token = null;
@@ -30,6 +38,12 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, setDoctors, removeUser } = userSlice.actions;
+export const {
+  setUser,
+  setDoctors,
+  removeUser,
+  setFavoritesDb,
+  removeFromFavorites,
+} = userSlice.actions;
 
 export default userSlice.reducer;

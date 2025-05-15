@@ -28,6 +28,7 @@ export default function OnePsychologistCard({
   return psychologists.map(
     ({
       id,
+      favorites,
       about,
       avatar_url,
       experience,
@@ -81,6 +82,7 @@ export default function OnePsychologistCard({
                   </p>
                   <Favorites
                     id={id}
+                    favoritesBoolean={favorites}
                     setModalLogin={setModalLogin}
                     setModalRegistr={setModalRegistr}
                   />

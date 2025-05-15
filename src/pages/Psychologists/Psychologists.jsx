@@ -32,7 +32,7 @@ export default function Psychologists({ setModalLogin, setModalRegistr }) {
   };
 
   return (
-    <ul className={s.psychologistsBox}>
+    <section className={s.psychologistsBox}>
       <Filter onChange={handlChange} filter={filter} />
       <Toaster
         position="top-center"
@@ -40,14 +40,16 @@ export default function Psychologists({ setModalLogin, setModalRegistr }) {
           duration: 3000,
         }}
       />
-      <OnePsychologistCard
-        psychologists={listOfDoctors}
-        setModalLogin={setModalLogin}
-        setModalRegistr={setModalRegistr}
-      />
+      <ul className={s.boxList}>
+        <OnePsychologistCard
+          psychologists={listOfDoctors}
+          setModalLogin={setModalLogin}
+          setModalRegistr={setModalRegistr}
+        />
+      </ul>
       {page < pages && (
         <LoadMoreBtn handleClick={handleClick}>Load more</LoadMoreBtn>
       )}
-    </ul>
+    </section>
   );
 }

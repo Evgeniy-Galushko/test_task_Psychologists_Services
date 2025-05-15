@@ -7,3 +7,5 @@ export const selectId = (state) => state.user.id;
 export const selectName = (state) => state.user.name;
 
 export const selectDb = (state) => state.user.db;
+
+export const selectFavorites = (state) => state.user.favorites;

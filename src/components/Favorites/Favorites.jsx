@@ -2,24 +2,60 @@ import { useId, useState } from "react";
 import sprite from "../../img/sprite.svg";
 import s from "./Favorites.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../../redux/slices/selectors.js";
+import {
+  selectDb,
+  selectFavorites,
+  selectToken,
+} from "../../redux/slices/selectors.js";
+// import { get } from "firebase/database";
+// import { dbRef } from "../../../firebase.js";
 import ModalCustom from "../ModalCustom/ModalCustom.jsx";
 import AuthorizationWarning from "../AuthorizationWarning/AuthorizationWarning.jsx";
+import {
+  removeFromFavorites,
+  setFavoritesDb,
+} from "../../redux/slices/userSlice.js";
 
-export default function Favorites({ id, setModalLogin, setModalRegistr }) {
-  // const idInput = useId();
+export default function Favorites({
+  id,
+  setModalLogin,
+  setModalRegistr,
+  favoritesBoolean,
+}) {
   const [favorites, setFavorites] = useState(false);
   const [modalRegisterOrLogin, setModalRegisterOrLogin] = useState(false);
   const token = useSelector(selectToken);
-  // const dispatch = useDispatch();
-  // const favoritesList = useSelector(selectFavoritetСar);
+  const database = useSelector(selectDb);
+  const favoritesDb = useSelector(selectFavorites);
+  // console.log(favoritesDb);
+  const dispatch = useDispatch();
+
+  console.log(favoritesBoolean);
 
   const handlChange = (evt) => {
     if (!token) {
       return setModalRegisterOrLogin(true);
     }
 
+    console.log(favoritesBoolean);
+
+    const idFavorites = evt.target.id;
+    console.log(evt.target.checked);
+
     setFavorites(evt.target.checked);
+
+    if (!database) return;
+    if (favoritesBoolean) {
+      const deleteDoctor = favoritesDb.filter(
+        (doctor) => doctor.id !== idFavorites
+      );
+      dispatch(removeFromFavorites(deleteDoctor));
+      // console.log(deleteDoctor);
+    } else {
+      const oneDoctor = database.filter((doctor) => doctor.id === idFavorites);
+      dispatch(setFavoritesDb(oneDoctor));
+      // console.log(oneDoctor);
+    }
   };
 
   function closeModalLogin() {
@@ -46,13 +82,15 @@ export default function Favorites({ id, setModalLogin, setModalRegistr }) {
       </ModalCustom>
       <input
         className={s.input}
+        value={favoritesBoolean}
         id={id}
         type="checkbox"
         onChange={handlChange}
         checked={favorites}
+        // checked={favoritesBoolean}
       />
       <label htmlFor={id}>
-        {favorites ? (
+        {favoritesBoolean ? (
           <svg className={s.iconHeart}>
             <use href={`${sprite}#icon-green_heart`} />
           </svg>

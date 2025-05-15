@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 export default function Header({ openModalLogin, openModalRegistr }) {
   const token = useSelector(selectToken);
+
   return (
     <header className={s.header}>
       <ul className={s.headerUl}>

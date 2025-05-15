@@ -17,7 +17,9 @@ const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const Psychologists = lazy(() =>
   import("../pages/Psychologists/Psychologists.jsx")
 );
-const Favorites = lazy(() => import("../pages/Favorites/Favorites.jsx"));
+const FavoritesPage = lazy(() =>
+  import("../pages/FavoritesPage/FavoritesPage.jsx")
+);
 const NotFoundPage = lazy(() =>
   import("../pages/NotFoundPage/NotFoundPage.jsx")
 );
@@ -98,7 +100,15 @@ function App() {
               />
             }
           />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={
+              <FavoritesPage
+                setModalLogin={setModalLogin}
+                setModalRegistr={setModalRegistr}
+              />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

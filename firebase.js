@@ -19,17 +19,3 @@ const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 export const dbRef = ref(db);
-
-// get(dbRef)
-//   .then((doctors) => {
-//     if (doctors.exists()) {
-//       console.log(doctors.val());
-//       // doctors.val();
-//       // setDatabase(doctors.val());
-//     } else {
-//       console.log("No data available");
-//     }
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
