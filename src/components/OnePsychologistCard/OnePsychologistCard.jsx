@@ -12,7 +12,9 @@ export default function OnePsychologistCard({
   setModalLogin,
   setModalRegistr,
 }) {
+  const [idDoctor, setIdDoctor] = useState("");
   const [modalAppointment, setModalAppointment] = useState(false);
+
   if (!psychologists) {
     return;
   }
@@ -82,6 +84,7 @@ export default function OnePsychologistCard({
                   </p>
                   <Favorites
                     id={id}
+                    setIdDoctor={setIdDoctor}
                     favoritesBoolean={favorites}
                     setModalLogin={setModalLogin}
                     setModalRegistr={setModalRegistr}

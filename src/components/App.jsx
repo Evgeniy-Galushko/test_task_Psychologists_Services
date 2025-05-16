@@ -9,7 +9,7 @@ import Registration from "./Registration/Registration.jsx";
 
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { get } from "firebase/database";
+import { get, onValue } from "firebase/database";
 import { dbRef } from "../../firebase.js";
 import { setDoctors } from "../redux/slices/userSlice.js";
 
@@ -32,17 +32,23 @@ function App() {
 
   useEffect(() => {
     const fetchDb = async () => {
-      await get(dbRef)
-        .then((doctors) => {
-          if (doctors.exists()) {
-            dispatch(setDoctors({ db: doctors.val() }));
-          } else {
-            console.log("No data available");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      await onValue(dbRef, (snapshot) => {
+        const data = snapshot.val();
+        dispatch(setDoctors({ db: data }));
+
+        // updateStarCount(postElement, data);
+      });
+      // await get(dbRef)
+      //   .then((doctors) => {
+      //     if (doctors.exists()) {
+      //       dispatch(setDoctors({ db: doctors.val() }));
+      //     } else {
+      //       console.log("No data available");
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   });
     };
     fetchDb();
   }, [dispatch]);

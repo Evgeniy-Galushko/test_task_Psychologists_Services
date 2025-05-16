@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import sprite from "../../img/sprite.svg";
 import s from "./Favorites.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,8 +7,8 @@ import {
   selectFavorites,
   selectToken,
 } from "../../redux/slices/selectors.js";
-// import { get } from "firebase/database";
-// import { dbRef } from "../../../firebase.js";
+import { get, update } from "firebase/database";
+import { dbRef } from "../../../firebase.js";
 import ModalCustom from "../ModalCustom/ModalCustom.jsx";
 import AuthorizationWarning from "../AuthorizationWarning/AuthorizationWarning.jsx";
 import {
@@ -24,27 +24,44 @@ export default function Favorites({
 }) {
   const [favorites, setFavorites] = useState(false);
   const [modalRegisterOrLogin, setModalRegisterOrLogin] = useState(false);
+  const [idFavorites, setIdFavorites] = useState("");
   const token = useSelector(selectToken);
   const database = useSelector(selectDb);
   const favoritesDb = useSelector(selectFavorites);
   // console.log(favoritesDb);
   const dispatch = useDispatch();
 
-  console.log(favoritesBoolean);
+  // console.log(favoritesBoolean);
+
+  useEffect(() => {
+    get(dbRef).then((doctors) => {
+      if (doctors.val()) {
+        const index = doctors
+          .val()
+          .findIndex((doctor) => doctor.id === idFavorites);
+        if (index === -1) return;
+        const oneDoctor = doctors
+          .val()
+          .filter((doctor) => doctor.id === idFavorites);
+        const newDoc = [{ ...oneDoctor[0], favorites: favorites }];
+        const updates = {};
+        updates[`/${index}/`] = { ...newDoc[0] };
+        // updates["/0/"] = { ...newDoc[0] };
+        return update(dbRef, updates);
+      }
+    });
+  }, [idFavorites, favorites]);
 
   const handlChange = (evt) => {
     if (!token) {
       return setModalRegisterOrLogin(true);
     }
 
-    console.log(favoritesBoolean);
-
-    const idFavorites = evt.target.id;
-    console.log(evt.target.checked);
-
+    setIdFavorites(evt.target.id);
     setFavorites(evt.target.checked);
 
     if (!database) return;
+    console.log(favoritesBoolean);
     if (favoritesBoolean) {
       const deleteDoctor = favoritesDb.filter(
         (doctor) => doctor.id !== idFavorites

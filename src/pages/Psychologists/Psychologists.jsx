@@ -16,6 +16,8 @@ export default function Psychologists({ setModalLogin, setModalRegistr }) {
 
   const database = useSelector(selectDb);
 
+  // console.log(database);
+
   const pages = Math.ceil(database.length / limit);
   const handleClick = () => {
     setPage(page + 1);

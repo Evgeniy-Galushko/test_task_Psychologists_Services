@@ -9,7 +9,7 @@ import { useLocation, useParams } from "react-router-dom";
 export default function MakeAnAppointment({ closeModal, avatar, name }) {
   const database = useSelector(selectDb);
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   // console.log(database);
   // if (database) {

@@ -17,6 +17,7 @@ export default function Reviews({ reviews, openModalAppointment, id }) {
     setButtonReadMore(true);
     setUserReviews(false);
   };
+
   return (
     <ul className={clsx(userReviews && s.reviews)}>
       <li>
@@ -71,14 +72,6 @@ export default function Reviews({ reviews, openModalAppointment, id }) {
               >
                 Make an appointment
               </button>
-
-              {/* <NavLink
-                to={`${id}`}
-                className={s.buttonMakeAnAppointment}
-                onClick={openModalAppointment}
-              >
-                Make an appointment
-              </NavLink> */}
             </li>
           </ul>
         )}
