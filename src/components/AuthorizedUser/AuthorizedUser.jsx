@@ -3,6 +3,7 @@ import sprite from "../../img/sprite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../redux/slices/userSlice.js";
 import { selectName } from "../../redux/slices/selectors.js";
+import { NavLink } from "react-router-dom";
 
 export default function AuthorizedUser() {
   const dispatch = useDispatch();
@@ -22,9 +23,14 @@ export default function AuthorizedUser() {
         <p className={s.nameUser}>{!nameUser ? "user" : nameUser}</p>
       </li>
       <li>
-        <button className={s.buttonLogOut} type="button" onClick={hendleClick}>
+        <NavLink
+          to="/psychologists"
+          className={s.buttonLogOut}
+          // type="button"
+          onClick={hendleClick}
+        >
           Log out
-        </button>
+        </NavLink>
       </li>
     </ul>
   );

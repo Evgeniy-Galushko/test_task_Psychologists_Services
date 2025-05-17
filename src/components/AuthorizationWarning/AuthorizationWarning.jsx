@@ -9,8 +9,8 @@ export default function AuthorizationWarning({
     <ul className={s.boxWarningAvt}>
       <li>
         <h2 className={s.title}>
-          If you are already registered on our website, please "Login", if not
-          then "Register"!
+          If you are already registered on our website, please click "Log In",
+          if not, then "Registration"!
         </h2>
       </li>
       <li className={s.boxButton}>
