@@ -4,7 +4,7 @@ import Favorites from "../Favorites/Favorites.jsx";
 import clsx from "clsx";
 import Reviews from "../Reviews/Reviews.jsx";
 import MakeAnAppointment from "../MakeAnAppointment/MakeAnAppointment.jsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ModalAppointment from "../ModalAppointment/ModalAppointment.jsx";
 
 export default function OnePsychologistCard({
@@ -14,16 +14,36 @@ export default function OnePsychologistCard({
 }) {
   const [idDoctor, setIdDoctor] = useState("");
   const [modalAppointment, setModalAppointment] = useState(false);
+  const [appointmentBooking, setAppointmentBooking] = useState({});
+  // const [btnId, setBtnId] = useState(null);
+  console.log(idDoctor);
+
+  // let idDoctor = null;
+  // console.log(!!idDoctor);
+  // const btnRef = useRef();
 
   if (!psychologists) {
     return;
   }
 
-  function openModalAppointment() {
-    setModalAppointment(true);
+  function openModalAppointment(id) {
+    setIdDoctor(id.target.id);
+    // console.log(id.target.id);
+    if (idDoctor) {
+      const oneDoctor = psychologists.filter(
+        (doctor) => doctor.id === idDoctor
+      );
+      setAppointmentBooking({
+        avatar: oneDoctor[0].avatar_url,
+        name: oneDoctor[0].name,
+      });
+      setModalAppointment(true);
+    }
   }
 
   function closeModalAppointment() {
+    setIdDoctor("");
+    setAppointmentBooking({});
     setModalAppointment(false);
   }
 
@@ -50,6 +70,7 @@ export default function OnePsychologistCard({
           >
             <MakeAnAppointment
               closeModal={closeModalAppointment}
+              appointmentBooking={appointmentBooking}
               avatar={avatar_url}
               name={name}
               id={id}
@@ -84,7 +105,6 @@ export default function OnePsychologistCard({
                   </p>
                   <Favorites
                     id={id}
-                    setIdDoctor={setIdDoctor}
                     favoritesBoolean={favorites}
                     setModalLogin={setModalLogin}
                     setModalRegistr={setModalRegistr}
@@ -120,6 +140,7 @@ export default function OnePsychologistCard({
                 </li>
                 <li>
                   <Reviews
+                    setIdDoctor={setIdDoctor}
                     reviews={reviews}
                     id={id}
                     openModalAppointment={openModalAppointment}

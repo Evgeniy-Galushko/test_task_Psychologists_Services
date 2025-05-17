@@ -6,7 +6,12 @@ import { useSelector } from "react-redux";
 import { selectDb } from "../../redux/slices/selectors.js";
 import { useLocation, useParams } from "react-router-dom";
 
-export default function MakeAnAppointment({ closeModal, avatar, name }) {
+export default function MakeAnAppointment({
+  closeModal,
+  avatar,
+  name,
+  appointmentBooking,
+}) {
   const database = useSelector(selectDb);
   const { id } = useParams();
   // console.log(id);
@@ -75,11 +80,15 @@ export default function MakeAnAppointment({ closeModal, avatar, name }) {
           </p>
           <ul className={s.boxDoctor}>
             <li>
-              <img src={avatar} alt={name} className={s.imgDoctor} />
+              <img
+                src={appointmentBooking.avatar}
+                alt={appointmentBooking.name}
+                className={s.imgDoctor}
+              />
             </li>
             <li>
               <p className={s.doctorParagraph}>Your psychologists</p>
-              <h3 className={s.doctorName}>{name}</h3>
+              <h3 className={s.doctorName}>{appointmentBooking.name}</h3>
             </li>
           </ul>
           <div className={s.oneInputBox}>

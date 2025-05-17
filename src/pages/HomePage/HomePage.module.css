@@ -2,7 +2,8 @@
   padding: 78px 128px;
   display: flex;
   flex-direction: row;
-  gap: 125px;
+  justify-content: space-between;
+  /* gap: 125px; */
 }
 
 .greetings {

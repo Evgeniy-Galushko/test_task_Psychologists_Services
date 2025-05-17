@@ -4,11 +4,17 @@ import s from "./Reviews.module.css";
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
-export default function Reviews({ reviews, openModalAppointment, id }) {
+export default function Reviews({
+  reviews,
+  openModalAppointment,
+  id,
+  setIdDoctor,
+}) {
   const [buttonReadMore, setButtonReadMore] = useState(true);
   const [userReviews, setUserReviews] = useState(false);
 
-  const handlClickReadMore = () => {
+  const handlClickReadMore = (id) => {
+    setIdDoctor(id.target.id);
     setButtonReadMore(false);
     setUserReviews(true);
   };
@@ -23,6 +29,7 @@ export default function Reviews({ reviews, openModalAppointment, id }) {
       <li>
         {buttonReadMore && (
           <button
+            id={id}
             type="button"
             className={s.buttonReadMore}
             onClick={handlClickReadMore}
@@ -66,6 +73,7 @@ export default function Reviews({ reviews, openModalAppointment, id }) {
                 Hide reviews
               </button>
               <button
+                id={id}
                 type="button"
                 className={s.buttonMakeAnAppointment}
                 onClick={openModalAppointment}
