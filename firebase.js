@@ -24,5 +24,4 @@ export const dbRef = ref(db);
 
 onValue(dbRef, (snapshot) => {
   const data = snapshot.val();
-  console.log(data);
 });
