@@ -4,7 +4,7 @@ import Favorites from "../Favorites/Favorites.jsx";
 import clsx from "clsx";
 import Reviews from "../Reviews/Reviews.jsx";
 import MakeAnAppointment from "../MakeAnAppointment/MakeAnAppointment.jsx";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ModalAppointment from "../ModalAppointment/ModalAppointment.jsx";
 
 export default function OnePsychologistCard({
@@ -15,12 +15,6 @@ export default function OnePsychologistCard({
   const [idDoctor, setIdDoctor] = useState("");
   const [modalAppointment, setModalAppointment] = useState(false);
   const [appointmentBooking, setAppointmentBooking] = useState({});
-  // const [btnId, setBtnId] = useState(null);
-  console.log(idDoctor);
-
-  // let idDoctor = null;
-  // console.log(!!idDoctor);
-  // const btnRef = useRef();
 
   if (!psychologists) {
     return;
@@ -28,7 +22,6 @@ export default function OnePsychologistCard({
 
   function openModalAppointment(id) {
     setIdDoctor(id.target.id);
-    // console.log(id.target.id);
     if (idDoctor) {
       const oneDoctor = psychologists.filter(
         (doctor) => doctor.id === idDoctor

@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import sprite from "../../img/sprite.svg";
 import s from "./Favorites.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,6 @@ export default function Favorites({
   const token = useSelector(selectToken);
   const database = useSelector(selectDb);
   const favoritesDb = useSelector(selectFavorites);
-  // console.log(favoritesDb);
   const dispatch = useDispatch();
 
   // console.log(favoritesBoolean);
@@ -46,7 +45,6 @@ export default function Favorites({
         const newDoc = [{ ...oneDoctor[0], favorites: favorites }];
         const updates = {};
         updates[`/${index}/`] = { ...newDoc[0] };
-        // updates["/0/"] = { ...newDoc[0] };
         return update(dbRef, updates);
       }
     });
@@ -61,17 +59,14 @@ export default function Favorites({
     setFavorites(evt.target.checked);
 
     if (!database) return;
-    console.log(favoritesBoolean);
     if (favoritesBoolean) {
       const deleteDoctor = favoritesDb.filter(
         (doctor) => doctor.id !== idFavorites
       );
       dispatch(removeFromFavorites(deleteDoctor));
-      // console.log(deleteDoctor);
     } else {
       const oneDoctor = database.filter((doctor) => doctor.id === idFavorites);
       dispatch(setFavoritesDb(oneDoctor));
-      // console.log(oneDoctor);
     }
   };
 
@@ -104,7 +99,6 @@ export default function Favorites({
         type="checkbox"
         onChange={handlChange}
         checked={favorites}
-        // checked={favoritesBoolean}
       />
       <label htmlFor={id}>
         {favoritesBoolean ? (

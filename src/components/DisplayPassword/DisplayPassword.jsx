@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import s from "./DisplayPassword.module.css";
 import sprite from "../../img/sprite.svg";
-import { useState } from "react";
 
 export default function DisplayPassword({
   displayPassword,

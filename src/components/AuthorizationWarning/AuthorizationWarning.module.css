@@ -6,6 +6,7 @@
   align-items: baseline;
   flex-direction: column;
   gap: 35px;
+  background-color: #fbfbfb;
 
   width: 560px;
   height: 300px;

@@ -6,21 +6,9 @@ import { useSelector } from "react-redux";
 import { selectDb } from "../../redux/slices/selectors.js";
 import { useLocation, useParams } from "react-router-dom";
 
-export default function MakeAnAppointment({
-  closeModal,
-  avatar,
-  name,
-  appointmentBooking,
-}) {
+export default function MakeAnAppointment({ closeModal, appointmentBooking }) {
   const database = useSelector(selectDb);
   const { id } = useParams();
-  // console.log(id);
-
-  // console.log(database);
-  // if (database) {
-  //   const oneDoctor = database.filter((doctor) => doctor.id === id);
-  //   console.log(oneDoctor);
-  // }
 
   const format = {
     name: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
@@ -35,8 +23,6 @@ export default function MakeAnAppointment({
       .required("Required"),
     number: Yup.string()
       .matches(format.number, `The number is not correct "+380971234567"!`)
-      // .min(9, "Too Short!")
-      // .max(13, "Too Long!")
       .required("Required"),
     email: Yup.string()
       .matches(
@@ -47,7 +33,6 @@ export default function MakeAnAppointment({
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     toast.success("You have made an appointment with a doctor!");
     actions.resetForm();
     closeModal();

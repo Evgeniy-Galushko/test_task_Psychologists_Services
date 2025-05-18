@@ -1,5 +1,4 @@
 import { useId } from "react";
-import { Field, Form, Formik } from "formik";
 import s from "./Filter.module.css";
 
 export function Filter({ onChange }) {

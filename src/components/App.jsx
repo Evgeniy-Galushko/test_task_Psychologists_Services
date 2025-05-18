@@ -9,13 +9,13 @@ import Registration from "./Registration/Registration.jsx";
 
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { get, onValue } from "firebase/database";
+import { onValue } from "firebase/database";
 import { dbRef } from "../../firebase.js";
 import { setDoctors } from "../redux/slices/userSlice.js";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.jsx"));
-const Psychologists = lazy(() =>
-  import("../pages/Psychologists/Psychologists.jsx")
+const PsychologistsPage = lazy(() =>
+  import("../pages/PsychologistsPage/PsychologistsPage.jsx")
 );
 const FavoritesPage = lazy(() =>
   import("../pages/FavoritesPage/FavoritesPage.jsx")
@@ -35,20 +35,7 @@ function App() {
       await onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         dispatch(setDoctors({ db: data }));
-
-        // updateStarCount(postElement, data);
       });
-      // await get(dbRef)
-      //   .then((doctors) => {
-      //     if (doctors.exists()) {
-      //       dispatch(setDoctors({ db: doctors.val() }));
-      //     } else {
-      //       console.log("No data available");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
     };
     fetchDb();
   }, [dispatch]);
@@ -100,7 +87,7 @@ function App() {
           <Route
             path="/psychologists"
             element={
-              <Psychologists
+              <PsychologistsPage
                 setModalLogin={setModalLogin}
                 setModalRegistr={setModalRegistr}
               />

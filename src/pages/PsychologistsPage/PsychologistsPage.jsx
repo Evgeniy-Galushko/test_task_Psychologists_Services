@@ -1,4 +1,4 @@
-import s from "./Psychologists.module.css";
+import s from "./PsychologistsPage.module.css";
 import OnePsychologistCard from "../../components/OnePsychologistCard/OnePsychologistCard.jsx";
 import { Filter } from "../../components/Filter/Filter.jsx";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn.jsx";
@@ -8,15 +8,13 @@ import { Toaster } from "react-hot-toast";
 import { selectDb } from "../../redux/slices/selectors.js";
 import { useSelector } from "react-redux";
 
-export default function Psychologists({ setModalLogin, setModalRegistr }) {
+export default function PsychologistsPage({ setModalLogin, setModalRegistr }) {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
   const [filter, setFilter] = useState("ShowAll");
   const [listOfDoctors, setListOfDoctors] = useState(null);
 
   const database = useSelector(selectDb);
-
-  // console.log(database);
 
   const pages = Math.ceil(database.length / limit);
   const handleClick = () => {

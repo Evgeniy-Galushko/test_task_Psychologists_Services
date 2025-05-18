@@ -26,7 +26,6 @@ export default function AuthorizedUser() {
         <NavLink
           to="/psychologists"
           className={s.buttonLogOut}
-          // type="button"
           onClick={hendleClick}
         >
           Log out

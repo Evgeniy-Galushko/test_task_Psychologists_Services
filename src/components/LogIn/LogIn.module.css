@@ -7,8 +7,6 @@
   height: 509px;
   padding: 64px;
   background-color: #fbfbfb;
-
-  /* background-color: aqua; */
 }
 
 .titleFomik {
@@ -33,7 +31,6 @@
 
 .divEmail {
   display: block;
-  /* margin-bottom: 18px; */
 }
 
 .input {

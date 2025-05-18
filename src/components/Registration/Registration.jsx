@@ -55,7 +55,6 @@ export default function Registration({ closeModal }) {
             })
           );
         });
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;

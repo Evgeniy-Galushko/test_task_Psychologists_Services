@@ -1,5 +1,4 @@
 import s from "./AuthorizationWarning.module.css";
-import Auth from "../Auth/Auth.jsx";
 
 export default function AuthorizationWarning({
   onCloseLogin,

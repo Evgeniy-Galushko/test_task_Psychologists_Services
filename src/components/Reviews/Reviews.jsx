@@ -2,7 +2,6 @@ import { useState } from "react";
 import sprite from "../../img/sprite.svg";
 import s from "./Reviews.module.css";
 import clsx from "clsx";
-import { NavLink } from "react-router-dom";
 
 export default function Reviews({
   reviews,

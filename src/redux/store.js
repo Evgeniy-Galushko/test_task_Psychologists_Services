@@ -19,12 +19,6 @@ const psychologistsPersistConfig = {
   whitelist: ["favorites", "token"],
 };
 
-// export const store = configureStore({
-//   reducer: {
-//     user: userReducer,
-//   },
-// });
-
 const store = configureStore({
   reducer: {
     user: persistReducer(psychologistsPersistConfig, userReducer),
