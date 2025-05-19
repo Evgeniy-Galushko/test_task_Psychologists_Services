@@ -11,25 +11,27 @@ export default function Header({ openModalLogin, openModalRegistr }) {
 
   return (
     <header className={s.header}>
-      <ul className={s.headerUl}>
-        <li>
-          <NavLink to="/" className={s.logo}>
-            psychologists<span className={s.logoDot}>.</span>
-            <span className={s.logoSpanGreen}>services</span>
-          </NavLink>
-        </li>
-        <li>
-          <Navigation />
-        </li>
-      </ul>
-      {token ? (
-        <AuthorizedUser />
-      ) : (
-        <Auth
-          openModalLogin={openModalLogin}
-          openModalRegistr={openModalRegistr}
-        />
-      )}
+      <siction className={s.boxsWidth}>
+        <ul className={s.headerUl}>
+          <li>
+            <NavLink to="/" className={s.logo}>
+              psychologists<span className={s.logoDot}>.</span>
+              <span className={s.logoSpanGreen}>services</span>
+            </NavLink>
+          </li>
+          <li>
+            <Navigation />
+          </li>
+        </ul>
+        {token ? (
+          <AuthorizedUser />
+        ) : (
+          <Auth
+            openModalLogin={openModalLogin}
+            openModalRegistr={openModalRegistr}
+          />
+        )}
+      </siction>
     </header>
   );
 }

@@ -1,4 +1,7 @@
 .sectionHome {
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 78px 128px;
   display: flex;
   flex-direction: row;

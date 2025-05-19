@@ -1,7 +1,13 @@
 .header {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border-bottom: 1px solid rgba(25, 26, 21, 0.1);
   background-color: #fbfbfb;
+}
+
+.boxsWidth {
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding: 24px 128px;

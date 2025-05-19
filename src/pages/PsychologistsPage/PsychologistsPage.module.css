@@ -1,4 +1,7 @@
 .psychologistsBox {
+  max-width: 1440px;
+  box-sizing: border-box;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 32px;

@@ -1,7 +1,8 @@
 import s from "./HomePage.module.css";
 import sprite from "../../img/sprite.svg";
+import { NavLink } from "react-router-dom";
 
-export default function HomePage({ openModalRegistr }) {
+export default function HomePage() {
   return (
     <ul className={s.sectionHome}>
       <li className={s.greetings}>
@@ -13,16 +14,12 @@ export default function HomePage({ openModalRegistr }) {
           We help you to reveal your potential, overcome challenges and find a
           guide in your own life with the help of our experienced psychologists.
         </p>
-        <button
-          className={s.buttonHome}
-          onClick={openModalRegistr}
-          type="button"
-        >
+        <NavLink to="/psychologists" className={s.buttonHome} type="button">
           Get started
           <svg className={s.icon}>
             <use href={`${sprite}#icon-Arrow-16`} />
           </svg>
-        </button>
+        </NavLink>
       </li>
       <li className={s.backgroundImgHome}>
         <ul>

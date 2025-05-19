@@ -1,6 +1,6 @@
 .notFoundPage {
-  /* max-width: 1440px; */
   height: 700px;
+
   background: url("../../img/brain.png"), rgba(84, 190, 150, 0.2);
   background-size: 50%;
   background-position: 50% 50%;
@@ -8,6 +8,8 @@
 }
 
 .div {
+  box-sizing: border-box;
+  max-width: 1440px;
   margin: 0 auto;
   width: 850px;
   position: relative;

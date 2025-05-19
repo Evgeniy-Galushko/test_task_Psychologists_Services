@@ -32,7 +32,7 @@ function App() {
 
   useEffect(() => {
     const fetchDb = async () => {
-      await onValue(dbRef, (snapshot) => {
+      onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         dispatch(setDoctors({ db: data }));
       });
@@ -80,10 +80,7 @@ function App() {
         }
       >
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage openModalRegistr={openModalRegistr} />}
-          />
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/psychologists"
             element={

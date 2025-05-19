@@ -48,7 +48,20 @@ export default function Favorites({
         return update(dbRef, updates);
       }
     });
+
+    // if (favorites) {
+    //   const deleteDoctor = favoritesDb.filter(
+    //     (doctor) => doctor.id !== idFavorites
+    //   );
+    //   dispatch(removeFromFavorites(deleteDoctor));
+    // } else {
+    //   const oneDoctor = database.filter((doctor) => doctor.id === idFavorites);
+    //   dispatch(setFavoritesDb(oneDoctor));
+    // }
   }, [idFavorites, favorites]);
+
+  console.log(idFavorites);
+  console.log(favorites);
 
   const handlChange = (evt) => {
     if (!token) {
@@ -58,16 +71,17 @@ export default function Favorites({
     setIdFavorites(evt.target.id);
     setFavorites(evt.target.checked);
 
-    if (!database) return;
-    if (favoritesBoolean) {
-      const deleteDoctor = favoritesDb.filter(
-        (doctor) => doctor.id !== idFavorites
-      );
-      dispatch(removeFromFavorites(deleteDoctor));
-    } else {
-      const oneDoctor = database.filter((doctor) => doctor.id === idFavorites);
-      dispatch(setFavoritesDb(oneDoctor));
-    }
+    // if (!database) return;
+    // if (favoritesBoolean) {
+    // if (favorites) {
+    //   const deleteDoctor = favoritesDb.filter(
+    //     (doctor) => doctor.id !== idFavorites
+    //   );
+    //   dispatch(removeFromFavorites(deleteDoctor));
+    // } else {
+    //   const oneDoctor = database.filter((doctor) => doctor.id === idFavorites);
+    //   dispatch(setFavoritesDb(oneDoctor));
+    // }
   };
 
   function closeModalLogin() {
